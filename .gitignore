@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#
+/static/
+/logs/
+/images/
+/django_cache/
+/search/
+/backups/
+/database/
