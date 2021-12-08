@@ -1,0 +1,93 @@
+* -------------------------------------------------------------------------*/
+/* PREVIEW - MOFA */
+/* -------------------------------------------------------------------------*/
+
+.preview.mce-content-body span[data-dpt]:before,
+.preview.mce-content-body span[data-dpt]:after {
+    display:none;
+}
+
+.preview.mce-content-body span[data-dpt=location]:before,
+.preview.mce-content-body span[data-dpt=location]:after {
+    display: inline;
+}
+
+.highlights.preview.mce-content-body span:before,
+.highlights.preview.mce-content-body span:after {
+    display: inline;
+}
+
+.highlights.preview.mce-content-body span[data-dpt] {
+    background-color: rgba(0,255,0, 0.15);
+}
+
+.highlights.preview.mce-content-body span[data-dpt=clause] {
+    border: 1px solid rgba(0,0,255,0.2);
+    border-left: 1px solid rgba(0,0,255,0.2);
+    border-right: 1px solid rgba(0,0,255,0.2);
+    border-top: none;
+    background: rgba(0,0,255,0.1);
+    padding: 0px;
+    margin-right: 0.5em;
+    margin-bottom: 1px;
+    display: inline;
+}
+
+.highlights.multicolor.preview.mce-content-body span[data-dpt=clause][data-dpt-type=disposition] {
+    background-color: rgba(255,0,255, 0.2);
+}
+.highlights.multicolor.preview.mce-content-body span[data-dpt=clause][data-dpt-type=witnesses] {
+    background-color: rgba(255,80,0, 0.2);
+}
+.highlights.multicolor.preview.mce-content-body span[data-dpt=clause][data-dpt-type=salutation] {
+    background-color: rgba(0,255,255, 0.2);
+}
+
+.highlights.multicolor.preview.mce-content-body span[data-dpt]:hover,
+.highlights.preview.mce-content-body span[data-dpt]:hover {
+    background-color: rgba(255,255,0,0.2);
+}
+.highlights.preview.mce-content-body span[data-dpt]:hover:before {
+    background-color: rgba(255,255,0, 0.2);
+}
+
+.highlights.preview.mce-content-body span[data-dpt=supplied],
+.highlights.preview.mce-content-body span[data-dpt=ex],
+.DEPRECATED.preview.line-breaks-as-pipes.mce-content-body span[data-dpt=lb] {
+    background: transparent;
+}
+
+.highlights.supplied-highlight.preview.mce-content-body span[data-dpt=supplied],
+.highlights.expansion-highlight.preview.mce-content-body span[data-dpt=ex] {
+    font-weight: bold;
+}
+.preview.mce-content-body span[data-dpt=ex]:before {
+    display: none;
+}
+.preview.supplied-hide.mce-content-body span[data-dpt=supplied] {
+    display: none;
+}
+.preview.expansion-hide.mce-content-body span[data-dpt=ex] {
+    font-size: 1px;
+}
+.preview.expansion-hide.mce-content-body span[data-dpt=ex]:after {
+    content: "'";
+    display: inline;
+    font-size: 16px;
+}
+
+.highlights.preview.mce-content-body span[data-dpt=person] {
+    background: none;
+}
+.highlights.preview.mce-content-body span[data-dpt=person]:before {
+    content: "";
+}
+
+.highlights.entities.preview.mce-content-body span[data-dpt=person] {
+    background-color: rgba(255,128,0,0.2);
+}
+.highlights.entities.preview.mce-content-body span[data-dpt=person]:before {
+    color: rgb(150,40,0);
+    content: "Person";
+}
+

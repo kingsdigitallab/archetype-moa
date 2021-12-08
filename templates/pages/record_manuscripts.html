@@ -1,0 +1,6 @@
+{% extends "pages/record_manuscripts_base.html" %}
+
+{% block ms_date %}
+    <dt>Text Date</dt>
+    <dd>{{ item_part.historical_item.get_first_text.date|default:'Unspecified' }}</dd>
+{% endblock %}

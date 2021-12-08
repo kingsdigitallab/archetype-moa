@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% load blog_tags keyword_tags i18n html_escape %}
+
+{% block top_right %}
+    <div class="col-md-4 smaller justified">
+        {# {% include "digipal/home_intro.html" %} #}
+        {% render_mezzanine_page 'home.intro' %}
+    </div>
+{% endblock %}
+
+{% block bottom-right %}
+    <div class="col-md-4 col-sm-12 home-twitter-feed">
+        <a class="twitter-timeline" data-height="384" data-dnt="true" data-theme="light" href="https://twitter.com/modelsauthority?ref_src=twsrc%5Etfw">
+          Tweets by @modelsauthority
+        </a>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+{% endblock %}

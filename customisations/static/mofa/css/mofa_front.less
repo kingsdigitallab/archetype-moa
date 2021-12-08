@@ -1,0 +1,68 @@
+/* Banners */
+// ALLOW_IMPORT
+@import '../../digipal/css/dpvars_bs.less';
+
+a {
+    font-weight: bold;
+
+    &.navbar-brand {
+        font-weight: inherit;
+    }
+}
+
+.pagination>.disabled>a {
+    color: #767676;
+}
+
+#banner-img-right {
+    background: none;
+}
+
+#banner-img-left {
+    background: none;
+}
+
+nav.primary-nav {
+    background: url('/static/digipal/images/moa-banner-web.jpg') center top repeat-y rgb(226, 224, 221);
+    
+    @media (max-width: @screen-xs-min) {
+        .navbar-header {
+            .navbar-brand {
+                // place the brand in the middle of the banner
+                top: 0px;
+            }
+        }
+    }
+    
+}
+
+#logo {
+    font-size: 42px;
+    
+    @media (min-width: @screen-xs-min) {
+        .logo-brand br {
+            display:none;
+        }
+    }
+
+    @media (max-width: @screen-xs-min) {
+        font-size: 30px;
+        line-height: 35px;
+    }
+}
+
+#logo .logo-sub {
+    color: #473729;
+    font-size: 16px;
+}
+
+.home-twitter-feed {
+    margin-top: -0.6em;
+    max-width: 100%;
+    
+    iframe {
+        // fix to make page responsive in IE9.
+        // otherwise uses twitter feed fixed-width.
+        width: 100% !important;
+    }
+}

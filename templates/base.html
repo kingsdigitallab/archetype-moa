@@ -1,0 +1,29 @@
+{% extends "base_default.html" %}
+{% load pages_tags mezzanine_tags future %}
+{% comment %}
+    Project customisation
+{% endcomment %}
+
+{% block extra_css %}
+    {{ block.super }}
+    {% compress css %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}mofa/css/mofa_front.less" type="text/less" />
+    {% endcompress %}
+{% endblock %}
+
+{% block logo_right %}
+{% endblock %}
+
+{% block logo %}
+    <span id='logo'>
+        {%spaceless%}
+            <span class="logo-brand logo-brand-digi">Models of <br/> Authority</span>
+            <span class='logo-separator hidden-sm hidden-xs'>&nbsp;</span>
+            <span class='logo-sub hidden-sm hidden-xs'>
+                Scottish Charters
+                <br/>
+                and the Emergence of Government 1100-1250
+            </span>
+        {%endspaceless%}
+    </span>
+{% endblock %}

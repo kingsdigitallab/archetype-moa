@@ -1,0 +1,14 @@
+{% load html_escape%}
+
+<div class="row">
+    <div class="col-md-12">
+        {% for graph in result %}
+
+            {% annotation_img graph.annotation lazy=1 a_title=graph.get_long_label a_data_placement="bottom" a_data_toggle="tooltip" a_data_container="body" wrap=graph link=graph %}
+
+        {% endfor %}
+    </div>
+</div>
+
+<p><em>These results represent a select sample. To find out more about the corpus and mark-up policy click <a href="/about/corpus-and-markup/">here</a>.</em></p><p><em>Graphs from the same manuscript page are listed in no particular order.</em></p>
+
