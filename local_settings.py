@@ -9,6 +9,14 @@ SERVER_EMAIL = 'no-reply@kcl.ac.uk'
 EMAIL_SUBJECT_PREFIX = '[mofa-liv] '
 MANAGERS = ADMINS
 
+USE_MOFA_IMAGE_SERVER = 0
+if USE_MOFA_IMAGE_SERVER:
+    IMAGE_SERVER_HOST = 'mofa-images.dighum.kcl.ac.uk'
+    IMAGE_SERVER_ZOOMIFY = 'https://%s%s?zoomify=%s/'
+    IMAGE_SERVER_PATH = '/iip/iipsrv.fcgi'
+    IMAGE_SERVER_URL = 'https://%s%s' % (IMAGE_SERVER_HOST, IMAGE_SERVER_PATH)
+    IMAGE_URLS_RELATIVE = False
+
 ALLOWED_HOSTS = [
     '142.93.41.124',
     'localhost',
@@ -32,15 +40,15 @@ REJECT_HTTP_API_REQUESTS = True
 ANNOTATOR_ZOOM_LEVELS = 7
 
 # customisations of the faceted search
-from customisations.digipal.views.faceted_search.settings import FACETED_SEARCH 
+from customisations.digipal.views.faceted_search.settings import FACETED_SEARCH
 
 FOOTER_LOGO_LINE = True
 
 HAND_DEFAULT_LABEL = 'Main Hand'
 HAND_ID_PREFIX = 'MoA Hand '
 
-MODELS_PUBLIC = ['itempart', 'image', 'graph', 'textcontentxml', 'hand', 'scribe', 'clause', 'title']
-MODELS_PRIVATE = ['itempart', 'image', 'graph', 'textcontentxml', 'hand', 'scribe', 'clause', 'title']
+MODELS_PRIVATE = ['itempart', 'image', 'graph', 'textcontentxml', 'hand', 'handdescription', 'scribe', 'clause', 'person']
+MODELS_PUBLIC = MODELS_PRIVATE
 
 AUTOCOMPLETE_PUBLIC_USER = True
 
@@ -62,3 +70,5 @@ API_PERMISSIONS = [['r', 'ALL'], ['', 'user']]
 
 if not os.path.exists('mofa'):
     os.system('ln -s digipal_project mofa')
+
+ARCHETYPE_SEARCH_HELP_URL = '/help/'

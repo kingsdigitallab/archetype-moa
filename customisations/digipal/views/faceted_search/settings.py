@@ -226,3 +226,7 @@ if 0:
     gd['fields'].append({'key': 'note', 'label': 'Note', 'path': 'annotation.display_note',
                          'search': True, 'viewable': True, 'type': 'xml'})
     gd['column_order'].append('note')
+
+FACETED_SEARCH['type_keys'] = {}
+for t in FACETED_SEARCH['types']:
+    FACETED_SEARCH['type_keys'][t['key']] = t
