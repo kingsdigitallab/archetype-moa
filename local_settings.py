@@ -71,4 +71,4 @@ API_PERMISSIONS = [['r', 'ALL'], ['', 'user']]
 if not os.path.exists('mofa'):
     os.system('ln -s digipal_project mofa')
 
-ARCHETYPE_SEARCH_HELP_URL = '/help/'
+ARCHETYPE_SEARCH_HELP_URL = '/about/search/'
