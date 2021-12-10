@@ -227,6 +227,9 @@ if 0:
                          'search': True, 'viewable': True, 'type': 'xml'})
     gd['column_order'].append('note')
 
+# SoW. - 2021
+remove_fields_from_faceted_search(['mp_permission', 'is_described'])
+
 FACETED_SEARCH['type_keys'] = {}
 for t in FACETED_SEARCH['types']:
     FACETED_SEARCH['type_keys'][t['key']] = t
