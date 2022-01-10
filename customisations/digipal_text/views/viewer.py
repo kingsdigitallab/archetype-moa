@@ -28,7 +28,8 @@ def text_api_view_text(request, item_partid, content_type, location_type, locati
         ret['presentation_options'] = [
            ['highlights', 'Enable highlights'],
            ['multicolor', 'Multicolour highlights'],
-           ['entities', 'Highlight People'],
+           ['entities-people', 'Highlight People'],
+           ['entities-places', 'Highlight Places'],
            ['ms-lb-pipe', 'Line breaks as |'],
            ['ms-lb-lb', 'Line breaks'],
            ['supplied-hide', 'Hide supplied text'],

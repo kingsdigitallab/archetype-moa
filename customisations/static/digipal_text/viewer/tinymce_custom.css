@@ -39,6 +39,9 @@
 .highlights.multicolor.preview.mce-content-body span[data-dpt=clause][data-dpt-type=witnesses] {
     background-color: rgba(255,80,0, 0.2);
 }
+.highlights.multicolor.preview.mce-content-body span[data-dpt=clause][data-dpt-type=dating] {
+    background-color: rgba(0,255,255, 0.2);
+}
 .highlights.multicolor.preview.mce-content-body span[data-dpt=clause][data-dpt-type=salutation] {
     background-color: rgba(0,255,255, 0.2);
 }
@@ -82,12 +85,26 @@
 .highlights.preview.mce-content-body span[data-dpt=person]:before {
     content: "";
 }
+.highlights.preview.mce-content-body span[data-dpt=place] {
+    background: none;
+}
+.highlights.preview.mce-content-body span[data-dpt=place]:before {
+    content: "";
+}
 
-.highlights.entities.preview.mce-content-body span[data-dpt=person] {
+.highlights.entities-people.preview.mce-content-body span[data-dpt=person] {
     background-color: rgba(255,128,0,0.2);
 }
-.highlights.entities.preview.mce-content-body span[data-dpt=person]:before {
+.highlights.entities-people.preview.mce-content-body span[data-dpt=person]:before {
     color: rgb(150,40,0);
     content: "Person";
+}
+
+.highlights.entities-places.preview.mce-content-body span[data-dpt=place] {
+    background-color: rgba(255,128,40,0.2);
+}
+.highlights.entities-places.preview.mce-content-body span[data-dpt=place]:before {
+    color: rgb(150,40,20);
+    content: "Place";
 }
 

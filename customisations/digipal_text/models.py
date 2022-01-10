@@ -1,23 +1,13 @@
 from django.db import models
 from mezzanine.conf import settings
-from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from digipal_text.models import TextContentXML, TextUnits, TextUnit, ClassProperty
-from django.utils.safestring import mark_safe
 from django.db.models import Q
 import os
 import re
-import string
-import unicodedata
-import cgi
-from django.utils.html import conditional_escape, escape
-from tinymce.models import HTMLField
-from django.db import transaction
-from mezzanine.generic.fields import KeywordsField
 import logging
 import digipal.models
 import json
-from django.contrib.auth.models import User
 from digipal.utils import urlencode
 dplog = logging.getLogger('digipal_debugger')
 
@@ -245,7 +235,7 @@ class Clauses(TextUnits):
         # actually find and load the requested records
         aids = self.get_bulk_ids()
 
-        debug = False
+        debug = 0
 
         # get all the texts
         # TODO: move that 'pre' block to the parent class
@@ -285,17 +275,20 @@ class Clauses(TextUnits):
 
                 from digipal_text.views import viewer
                 elementid = viewer.get_elementid_from_xml_element(
-                    clause_xml, idcount)
-                clause_obj.elementid = json.dumps(elementid)
-                clause_obj.unitid = viewer.get_unitid_from_xml_elementid(
-                    elementid)
-                clause_obj.content_xml = content_xml
-                clause_obj.content = get_unicode_from_xml(
-                    clause_xml, text_only=False)
+                    clause_xml, idcount
+                )
+                if elementid:
+                    clause_obj.elementid = json.dumps(elementid)
+                    clause_obj.unitid = viewer.get_unitid_from_xml_elementid(
+                        elementid
+                    )
+                    clause_obj.content_xml = content_xml
+                    clause_obj.content = get_unicode_from_xml(
+                        clause_xml, text_only=False)
 
-                clause_obj.set_from_xml_element(clause_xml)
+                    clause_obj.set_from_xml_element(clause_xml)
 
-                yield clause_obj
+                    yield clause_obj
 
 
 class Clause(TextUnit):
@@ -317,6 +310,7 @@ class Clause(TextUnit):
     def get_label(self):
         return '%s (%s)' % (self.clause_type, self.__class__.__name__)
 
+# People clause
 
 class People(Clauses):
     def findall_xml_elements(self, root):
@@ -337,15 +331,44 @@ class Person(Clause):
 
         person_type = element.attrib.get('data-dpt-type', None)
         self.clause_type = 'Person Name'
+
+        # match instance of a title to predefined categories
+        # e.g. Vic -> Vicecomes
         if person_type == 'title':
-            types = ['Iusticia', 'Vicecomes', 'Cancellarius', 'Camerarius',
-                     'Constabularius', 'Marescallus', 'Clericus', 'Ballivus', 'Serviens']
+            types = [
+                'Iusticia', 'Vicecomes', 'Cancellarius', 'Camerarius',
+                'Constabularius', 'Marescallus', 'Clericus', 'Ballivus',
+                'Serviens'
+            ]
             import difflib
             from digipal import utils as dputils
             content_str = dputils.get_unicode_from_xml(element, text_only=True)
             best_matches = difflib.get_close_matches(
                 content_str, types, cutoff=0.2)
             self.clause_type = best_matches[0] if best_matches else content_str
+
+
+# Place clause
+
+class Places(Clauses):
+    def findall_xml_elements(self, root):
+        return root.findall("//span[@data-dpt='place']")
+
+    def new_unit(self):
+        return Place()
+
+
+class Place(Clause):
+    @ClassProperty
+    @classmethod
+    def objects(cls, *args, **kwargs):
+        return Places()
+
+    def set_from_xml_element(self, element):
+        super(Place, self).set_from_xml_element(element)
+
+        place_type = element.attrib.get('data-dpt-type', None)
+        self.clause_type = 'Place Name'
 
 
 from digipal.models import set_additional_models_methods

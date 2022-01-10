@@ -11,6 +11,9 @@ def get_env(name, default=None):
 DEBUG = get_env('DJANGO_DEBUG', 'False') == 'True'
 image_server_host = get_env('IMAGE_SERVER_HOST')
 
+if DEBUG:
+    IMAGE_SERVER_CERT_VERIFY = False
+
 ADMINS = []
 SERVER_EMAIL = 'no-reply@kcl.ac.uk'
 EMAIL_SUBJECT_PREFIX = '[mofa-liv] '
@@ -54,7 +57,7 @@ FOOTER_LOGO_LINE = True
 HAND_DEFAULT_LABEL = 'Main Hand'
 HAND_ID_PREFIX = 'MoA Hand '
 
-MODELS_PRIVATE = ['itempart', 'image', 'graph', 'textcontentxml', 'handdescription', 'scribe', 'clause', 'person']
+MODELS_PRIVATE = ['itempart', 'image', 'graph', 'textcontentxml', 'handdescription', 'scribe', 'clause', 'person', 'place']
 MODELS_PUBLIC = MODELS_PRIVATE
 
 AUTOCOMPLETE_PUBLIC_USER = True
@@ -72,10 +75,12 @@ KDL_MAINTAINED = True
 
 API_PERMISSIONS = [['r', 'ALL'], ['', 'user']]
 
+ARCHETYPE_SEARCH_HELP_URL = '/about/search/'
+
 # dirty trick: code still imports from mofa package
 # but with docker everything is under digipal_project
 
 if not os.path.exists('mofa'):
     os.system('ln -s digipal_project mofa')
 
-ARCHETYPE_SEARCH_HELP_URL = '/about/search/'
+

@@ -47,6 +47,16 @@ FACETED_SEARCH['types'].append(clauses)
 clauses = deepcopy(clauses)
 clauses.update({
     'disabled': False,
+    'key': 'places',
+    'label': 'Place',
+    'label_plural': 'Places',
+    'model': 'mofa.customisations.digipal_text.models.Place',
+})
+FACETED_SEARCH['types'].append(clauses)
+
+clauses = deepcopy(clauses)
+clauses.update({
+    'disabled': False,
     'key': 'people',
     'label': 'Person',
     'label_plural': 'People',
