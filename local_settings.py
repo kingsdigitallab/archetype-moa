@@ -75,6 +75,8 @@ KDL_MAINTAINED = True
 
 API_PERMISSIONS = [['r', 'ALL'], ['', 'user']]
 
+ANNOTATOR_UNDESCRIBED_GRAPH_HTML = '<li class="component"></li>'
+
 ARCHETYPE_SEARCH_HELP_URL = '/about/search/'
 
 # dirty trick: code still imports from mofa package
