@@ -1,0 +1,9 @@
+{% extends "index_default.html" %}
+
+{% block bottom_left %}
+    {% include 'digipal/recent_posts.html' with posts_title='News' posts_category='news' posts_more='More news' %}
+{% endblock %}
+
+{% block bottom_middle %}
+    {% include 'digipal/recent_posts.html' with posts_title='Feature Articles' posts_category='feature-of-the-month' posts_more='More features' %}
+{% endblock %}
